@@ -32,7 +32,7 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 
 • Dropbear                : 443, 109, 143
 
-• Squid Proxy             : 3128, 8080 (OFF)
+• Squid Proxy             : 3128, 8080
 
 • Badvpn                  : 7100, 7200, 7300
 
