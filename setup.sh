@@ -19,27 +19,27 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Link Hosting Kalian Untuk Ssh Vpn
-akbarvpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+gl33chervpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
 # Link Hosting Kalian Untuk Sstp
-akbarvpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sstp"
+gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sstp"
 # Link Hosting Kalian Untuk Ssr
-akbarvpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssr"
+gl33chervpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssr"
 # Link Hosting Kalian Untuk Shadowsocks
-akbarvpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/shadowsocks"
+gl33chervpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/shadowsocks"
 # Link Hosting Kalian Untuk Wireguard
-akbarvpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/wireguard"
+gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/wireguard"
 # Link Hosting Kalian Untuk Xray
-akbarvpnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
+gl33chervpnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
 # Link Hosting Kalian Untuk Ipsec
-akbarvpnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipsec"
+gl33chervpnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipsec"
 # Link Hosting Kalian Untuk Backup
-akbarvpnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/backup"
+gl33chervpnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/backup"
 # Link Hosting Kalian Untuk Websocket
-akbarvpnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
+gl33chervpnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
 # Link Hosting Kalian Untuk Ohp
-akbarvpnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ohp"
+gl33chervpnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ohp"
 # link Hosting update
-akbarvpnnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/update"
+gl33chervpnnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/update"
 
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
@@ -58,20 +58,20 @@ echo "Script Already Installed"
 exit 0
 fi
 mkdir /var/lib/gl33ch3rvpn;
-wget https://${akbarvpn}/newhost.sh && chmod +x newhost.sh && ./newhost.sh
+wget https://${gl33chervpn}/newhost.sh && chmod +x newhost.sh && ./newhost.sh
 sleep 1
 #install v2ray
-wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+wget https://${gl33chervpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 #install ssh ovpn
-wget https://${akbarvpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://${gl33chervpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 # Websocket
-wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://${gl33chervpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
 # OphvServer
-wget https://${akbarvpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://${gl33chervpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 #Setting Backup
-wget https://${akbarvpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://${gl33chervpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 # Update Menu
-wget https://${akbarvpnnnnnnnnnnn}/getupdate.sh && chmod +x getupdate.sh && ./getupdate.sh
+wget https://${gl33chervpnnnnnnnnnnn}/getupdate.sh && chmod +x getupdate.sh && ./getupdate.sh
 # sslh fix
 wget https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sslh-fix/sslh-fix.sh && chmod +x sslh-fix.sh && ./sslh-fix.sh
 #restart service
@@ -103,7 +103,7 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl enable autosett
-wget -O /etc/set.sh "https://${akbarvpn}/set.sh"
+wget -O /etc/set.sh "https://${gl33chervpn}/set.sh"
 chmod +x /etc/set.sh
 sslh-fix-reboot
 history -c
