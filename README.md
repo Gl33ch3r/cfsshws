@@ -71,5 +71,5 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 ------------
 **Telegram**
 ------------
-[GONFREECS](https://t.me/Gonfreecs)
+[GONFREECS600](https://t.me/Gonfreecs600)
 
