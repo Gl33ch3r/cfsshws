@@ -22,19 +22,19 @@ fi
 clear
 # ==================================================
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+gl33chervpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
 
 # Link Hosting Kalian Untuk Xray
-akbarvpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
+gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
 
 # Link Hosting Kalian Untuk Trojan Go
-akbarvpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/trojango"
+gl33chervpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/trojango"
 
 # Link Hosting Kalian Untuk Stunnel5
-akbarvpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/stunnel5"
+gl33chervpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/stunnel5"
 
 #Link Hosting Kalian Untuk Websocket
-akbarvpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
+gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
@@ -54,7 +54,7 @@ commonname=gl33ch3rvpn
 email=akbarssh21@gmail.com
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://${akbarvpn}/password"
+wget -O /etc/pam.d/common-password "https://${gl33chervpn}/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -153,8 +153,8 @@ echo "neofetch" >> .profile
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-curl https://${akbarvpn}/nginx.conf > /etc/nginx/nginx.conf
-curl https://${akbarvpn}/vps.conf > /etc/nginx/conf.d/vps.conf
+curl https://${gl33chervpn}/nginx.conf > /etc/nginx/nginx.conf
+curl https://${gl33chervpn}/vps.conf > /etc/nginx/conf.d/vps.conf
 sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
@@ -162,13 +162,13 @@ echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://${akbarvpn}/index.html1"
+wget -O /home/vps/public_html/index.html "https://${gl33chervpn}/index.html1"
 /etc/init.d/nginx restart
 cd
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://${akbarvpn}/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://${gl33chervpn}/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -197,9 +197,9 @@ echo "/usr/sbin/nologin" >> /etc/shells
 
 # install squid
 cd
-#apt -y install squid3
-#wget -O /etc/squid/squid.conf "https://${akbarvpn}/squid3.conf"
-#sed -i $MYIP2 /etc/squid/squid.conf
+apt -y install squid3
+wget -O /etc/squid/squid.conf "https://${gl33chervpn}/squid3.conf"
+sed -i $MYIP2 /etc/squid/squid.conf
 
 # Install SSLH
 apt -y install sslh
@@ -254,7 +254,7 @@ rm -rf /root/vnstat-2.6
 
 # install stunnel 5 
 cd /root/
-wget -q -O stunnel5.zip "https://${akbarvpnnnn}/stunnel5.zip"
+wget -q -O stunnel5.zip "https://${gl33chervpnnnn}/stunnel5.zip"
 unzip -o stunnel5.zip
 cd /root/stunnel
 chmod +x configure
@@ -301,7 +301,6 @@ cat > /etc/systemd/system/stunnel5.service << END
 [Unit]
 Description=Stunnel5 Service
 Documentation=https://stunnel.org
-Documentation=https://github.com/Akbar218
 After=syslog.target network-online.target
 
 [Service]
@@ -313,7 +312,7 @@ WantedBy=multi-user.target
 END
 
 # Service Stunnel5 /etc/init.d/stunnel5
-wget -q -O /etc/init.d/stunnel5 "https://${akbarvpnnnn}/stunnel5.init"
+wget -q -O /etc/init.d/stunnel5 "https://${gl33chervpnnnn}/stunnel5.init"
 
 # Ubah Izin Akses
 chmod 600 /etc/stunnel5/stunnel5.pem
@@ -338,7 +337,7 @@ systemctl restart stunnel5
 /etc/init.d/stunnel5 restart
 
 #OpenVPN
-wget https://${akbarvpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://${gl33chervpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -375,10 +374,10 @@ echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Install BBR
-wget https://${akbarvpn}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://${gl33chervpn}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 # Ganti Banner
-wget -O /etc/issue.net "https://${akbarvpn}/issue.net"
+wget -O /etc/issue.net "https://${gl33chervpn}/issue.net"
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -399,55 +398,55 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O addhost "https://${akbarvpn}/addhost.sh"
-wget -O about "https://${akbarvpn}/about.sh"
-wget -O menu "https://${akbarvpn}/menu.sh"
-wget -O addssh "https://${akbarvpn}/addssh.sh"
-wget -O trialssh "https://${akbarvpn}/trialssh.sh"
-wget -O delssh "https://${akbarvpn}/delssh.sh"
-wget -O member "https://${akbarvpn}/member.sh"
-wget -O delexp "https://${akbarvpn}/delexp.sh"
-wget -O cekssh "https://${akbarvpn}/cekssh.sh"
-wget -O restart "https://${akbarvpn}/restart.sh"
-wget -O speedtest "https://${akbarvpn}/speedtest_cli.py"
-wget -O info "https://${akbarvpn}/info.sh"
-wget -O ram "https://${akbarvpn}/ram.sh"
-wget -O renewssh "https://${akbarvpn}/renewssh.sh"
-wget -O autokill "https://${akbarvpn}/autokill.sh"
-wget -O ceklim "https://${akbarvpn}/ceklim.sh"
-wget -O tendang "https://${akbarvpn}/tendang.sh"
-wget -O clearlog "https://${akbarvpn}/clearlog.sh"
-wget -O changeport "https://${akbarvpn}/changeport.sh"
-wget -O portovpn "https://${akbarvpn}/portovpn.sh"
-wget -O portwg "https://${akbarvpn}/portwg.sh"
-wget -O porttrojan "https://${akbarvpn}/porttrojan.sh"
-wget -O portsstp "https://${akbarvpn}/portsstp.sh"
-wget -O portsquid "https://${akbarvpn}/portsquid.sh"
-wget -O portvlm "https://${akbarvpn}/portvlm.sh"
-wget -O wbmn "https://${akbarvpn}/webmin.sh"
-wget -O xp "https://${akbarvpn}/xp.sh"
-wget -O swapkvm "https://${akbarvpn}/swapkvm.sh"
-wget -O certsslh "https://${akbarvpn}/certsslh.sh"
-wget -O cfnhost "https://${akbarvpn}/cfnhost.sh"
-# wget -O addvmess "https://${akbarvpnn}/addv2ray.sh"
-# wget -O addvless "https://${akbarvpnn}/addvless.sh"
-# wget -O addtrojan "https://${akbarvpnn}/addtrojan.sh"
-# wget -O delvmess "https://${akbarvpnn}/delv2ray.sh"
-# wget -O delvless "https://${akbarvpnn}/delvless.sh"
-# wget -O deltrojan "https://${akbarvpnn}/deltrojan.sh"
-# wget -O cekvless "https://${akbarvpnn}/cekvless.sh"
-# wget -O cektrojan "https://${akbarvpnn}/cektrojan.sh"
-# wget -O renewvmess "https://${akbarvpnn}/renewv2ray.sh"
-# wget -O renewvless "https://${akbarvpnn}/renewvless.sh"
-# wget -O renewtrojan "https://${akbarvpnn}/renewtrojan.sh"
-# wget -O addtrgo "https://${akbarvpnnn}/addtrgo.sh"
-# wget -O deltrgo "https://${akbarvpnnn}/deltrgo.sh"
-# wget -O renewtrgo "https://${akbarvpnnn}/renewtrgo.sh"
-# wget -O cektrgo "https://${akbarvpnnn}/cektrgo.sh"
-# wget -O cekvmess "https://${akbarvpnn}/cekv2ray.sh"
-# wget -O certv2ray "https://${akbarvpnn}/certv2ray.sh"
-wget -O portsshws "https://${akbarvpnnnnn}/portsshws.sh"
-wget -O portsshnontls "https://${akbarvpnnnnn}/portsshnontls.sh"
+wget -O addhost "https://${gl33chervpn}/addhost.sh"
+wget -O about "https://${gl33chervpn}/about.sh"
+wget -O menu "https://${gl33chervpn}/menu.sh"
+wget -O addssh "https://${gl33chervpn}/addssh.sh"
+wget -O trialssh "https://${gl33chervpn}/trialssh.sh"
+wget -O delssh "https://${gl33chervpn}/delssh.sh"
+wget -O member "https://${gl33chervpn}/member.sh"
+wget -O delexp "https://${gl33chervpn}/delexp.sh"
+wget -O cekssh "https://${gl33chervpn}/cekssh.sh"
+wget -O restart "https://${gl33chervpn}/restart.sh"
+wget -O speedtest "https://${gl33chervpn}/speedtest_cli.py"
+wget -O info "https://${gl33chervpn}/info.sh"
+wget -O ram "https://${gl33chervpn}/ram.sh"
+wget -O renewssh "https://${gl33chervpn}/renewssh.sh"
+wget -O autokill "https://${gl33chervpn}/autokill.sh"
+wget -O ceklim "https://${gl33chervpn}/ceklim.sh"
+wget -O tendang "https://${gl33chervpn}/tendang.sh"
+wget -O clearlog "https://${gl33chervpn}/clearlog.sh"
+wget -O changeport "https://${gl33chervpn}/changeport.sh"
+wget -O portovpn "https://${gl33chervpn}/portovpn.sh"
+wget -O portwg "https://${gl33chervpn}/portwg.sh"
+wget -O porttrojan "https://${gl33chervpn}/porttrojan.sh"
+wget -O portsstp "https://${gl33chervpn}/portsstp.sh"
+wget -O portsquid "https://${gl33chervpn}/portsquid.sh"
+wget -O portvlm "https://${gl33chervpn}/portvlm.sh"
+wget -O wbmn "https://${gl33chervpn}/webmin.sh"
+wget -O xp "https://${gl33chervpn}/xp.sh"
+wget -O swapkvm "https://${gl33chervpn}/swapkvm.sh"
+wget -O certsslh "https://${gl33chervpn}/certsslh.sh"
+wget -O cfnhost "https://${gl33chervpn}/cfnhost.sh"
+# wget -O addvmess "https://${gl33chervpnn}/addv2ray.sh"
+# wget -O addvless "https://${gl33chervpnn}/addvless.sh"
+# wget -O addtrojan "https://${gl33chervpnn}/addtrojan.sh"
+# wget -O delvmess "https://${gl33chervpnn}/delv2ray.sh"
+# wget -O delvless "https://${gl33chervpnn}/delvless.sh"
+# wget -O deltrojan "https://${gl33chervpnn}/deltrojan.sh"
+# wget -O cekvless "https://${gl33chervpnn}/cekvless.sh"
+# wget -O cektrojan "https://${gl33chervpnn}/cektrojan.sh"
+# wget -O renewvmess "https://${gl33chervpnn}/renewv2ray.sh"
+# wget -O renewvless "https://${gl33chervpnn}/renewvless.sh"
+# wget -O renewtrojan "https://${gl33chervpnn}/renewtrojan.sh"
+# wget -O addtrgo "https://${gl33chervpnnn}/addtrgo.sh"
+# wget -O deltrgo "https://${gl33chervpnnn}/deltrgo.sh"
+# wget -O renewtrgo "https://${gl33chervpnnn}/renewtrgo.sh"
+# wget -O cektrgo "https://${gl33chervpnnn}/cektrgo.sh"
+# wget -O cekvmess "https://${gl33chervpnn}/cekv2ray.sh"
+# wget -O certv2ray "https://${gl33chervpnn}/certv2ray.sh"
+wget -O portsshws "https://${gl33chervpnnnnn}/portsshws.sh"
+wget -O portsshnontls "https://${gl33chervpnnnnn}/portsshnontls.sh"
 
 chmod +x addhost
 chmod +x menu
