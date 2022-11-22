@@ -69,6 +69,7 @@ dropbears=$(systemctl status dropbear | grep Active: | awk '{print $2}')
 nginxs=$(systemctl status nginx | grep Active: | awk '{print $2}')
 crons=$(systemctl status cron | grep Active: | awk '{print $2}')
 fails=$(systemctl status fail2ban | grep Active: | awk '{print $2}')
+squid=$(systemctl status squid | grep Active: | awk '{print $2}')
 # xrays=$(systemctl status xray | grep Active: | awk '{print $2}')
 ell=active
 #
@@ -97,6 +98,11 @@ if [ "$sttunl5" == "$ell" ]; then
 echo -e " Stunnel 5               :$GREEN [Running] $NC"
 else
 echo -e " Stunnel 5               :$RED [Error] $NC"
+fi
+if [ "$squid" == "$ell" ]; then
+echo -e " Squid Proxy             :$GREEN [Running] $NC"
+else
+echo -e " Squid Proxy             :$RED [Error] $NC"
 fi
 if [ "$dropbears" == "$ell" ]; then
 echo -e " Dropbear                :$GREEN [Running] $NC"
