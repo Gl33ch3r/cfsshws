@@ -12,8 +12,8 @@ LIGHT='\033[0;37m'
 # ==========================================
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
-IZIN=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP | awk '{print $3}')
-if [ $MYIP = $MYIP ]; then
+ALLOWEDIP=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP)
+if [ $MYIP == $ALLOWEDIP ]; then
 echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
 echo -e "${NC}${RED}Permission Denied!${NC}";
@@ -22,19 +22,19 @@ fi
 clear
 # ==================================================
 # Link Hosting Kalian
-gl33chervpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+sshlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
 
 # Link Hosting Kalian Untuk Xray
-gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
+xraylink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
 
 # Link Hosting Kalian Untuk Trojan Go
-gl33chervpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/trojango"
+trojangolink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/trojango"
 
 # Link Hosting Kalian Untuk Stunnel5
-gl33chervpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/stunnel5"
+stunnel5link="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/stunnel5"
 
 #Link Hosting Kalian Untuk Websocket
-gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
+websocketlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
@@ -54,7 +54,7 @@ commonname=gl33ch3rvpn
 email=akbarssh21@gmail.com
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://${gl33chervpn}/password"
+wget -O /etc/pam.d/common-password "https://${sshlink}/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -153,8 +153,8 @@ echo "neofetch" >> .profile
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-curl https://${gl33chervpn}/nginx.conf > /etc/nginx/nginx.conf
-curl https://${gl33chervpn}/vps.conf > /etc/nginx/conf.d/vps.conf
+curl https://${sshlink}/nginx.conf > /etc/nginx/nginx.conf
+curl https://${sshlink}/vps.conf > /etc/nginx/conf.d/vps.conf
 sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
 useradd -m vps;
 mkdir -p /home/vps/public_html
@@ -162,13 +162,13 @@ echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
 chown -R www-data:www-data /home/vps/public_html
 chmod -R g+rw /home/vps/public_html
 cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://${gl33chervpn}/index.html1"
+wget -O /home/vps/public_html/index.html "https://${sshlink}/index.html1"
 /etc/init.d/nginx restart
 cd
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://${gl33chervpn}/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://${sshlink}/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -198,7 +198,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://${gl33chervpn}/squid3.conf"
+wget -O /etc/squid/squid.conf "https://${sshlink}/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # Install SSLH
@@ -239,7 +239,7 @@ systemctl restart sslh
 apt -y install vnstat
 /etc/init.d/vnstat restart
 apt -y install libsqlite3-dev
-wget https://humdi.net/vnstat/vnstat-2.6.tar.gz
+wget https://${sshlink}/vnstat-2.6.tar.gz
 tar zxvf vnstat-2.6.tar.gz
 cd vnstat-2.6
 ./configure --prefix=/usr --sysconfdir=/etc && make && make install
@@ -254,7 +254,7 @@ rm -rf /root/vnstat-2.6
 
 # install stunnel 5 
 cd /root/
-wget -q -O stunnel5.zip "https://${gl33chervpnnnn}/stunnel5.zip"
+wget -q -O stunnel5.zip "https://${stunnel5link}/stunnel5.zip"
 unzip -o stunnel5.zip
 cd /root/stunnel
 chmod +x configure
@@ -312,7 +312,7 @@ WantedBy=multi-user.target
 END
 
 # Service Stunnel5 /etc/init.d/stunnel5
-wget -q -O /etc/init.d/stunnel5 "https://${gl33chervpnnnn}/stunnel5.init"
+wget -q -O /etc/init.d/stunnel5 "https://${stunnel5link}/stunnel5.init"
 
 # Ubah Izin Akses
 chmod 600 /etc/stunnel5/stunnel5.pem
@@ -337,7 +337,7 @@ systemctl restart stunnel5
 /etc/init.d/stunnel5 restart
 
 #OpenVPN
-wget https://${gl33chervpn}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://${sshlink}/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -374,10 +374,10 @@ echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 # Install BBR
-wget https://${gl33chervpn}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://${sshlink}/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 
 # Ganti Banner
-wget -O /etc/issue.net "https://${gl33chervpn}/issue.net"
+wget -O /etc/issue.net "https://${sshlink}/issue.net"
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -398,55 +398,55 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O addhost "https://${gl33chervpn}/addhost.sh"
-wget -O about "https://${gl33chervpn}/about.sh"
-wget -O menu "https://${gl33chervpn}/menu.sh"
-wget -O addssh "https://${gl33chervpn}/addssh.sh"
-wget -O trialssh "https://${gl33chervpn}/trialssh.sh"
-wget -O delssh "https://${gl33chervpn}/delssh.sh"
-wget -O member "https://${gl33chervpn}/member.sh"
-wget -O delexp "https://${gl33chervpn}/delexp.sh"
-wget -O cekssh "https://${gl33chervpn}/cekssh.sh"
-wget -O restart "https://${gl33chervpn}/restart.sh"
-wget -O speedtest "https://${gl33chervpn}/speedtest_cli.py"
-wget -O info "https://${gl33chervpn}/info.sh"
-wget -O ram "https://${gl33chervpn}/ram.sh"
-wget -O renewssh "https://${gl33chervpn}/renewssh.sh"
-wget -O autokill "https://${gl33chervpn}/autokill.sh"
-wget -O ceklim "https://${gl33chervpn}/ceklim.sh"
-wget -O tendang "https://${gl33chervpn}/tendang.sh"
-wget -O clearlog "https://${gl33chervpn}/clearlog.sh"
-wget -O changeport "https://${gl33chervpn}/changeport.sh"
-wget -O portovpn "https://${gl33chervpn}/portovpn.sh"
-wget -O portwg "https://${gl33chervpn}/portwg.sh"
-wget -O porttrojan "https://${gl33chervpn}/porttrojan.sh"
-wget -O portsstp "https://${gl33chervpn}/portsstp.sh"
-wget -O portsquid "https://${gl33chervpn}/portsquid.sh"
-wget -O portvlm "https://${gl33chervpn}/portvlm.sh"
-wget -O wbmn "https://${gl33chervpn}/webmin.sh"
-wget -O xp "https://${gl33chervpn}/xp.sh"
-wget -O swapkvm "https://${gl33chervpn}/swapkvm.sh"
-wget -O certsslh "https://${gl33chervpn}/certsslh.sh"
-wget -O cfnhost "https://${gl33chervpn}/cfnhost.sh"
-# wget -O addvmess "https://${gl33chervpnn}/addv2ray.sh"
-# wget -O addvless "https://${gl33chervpnn}/addvless.sh"
-# wget -O addtrojan "https://${gl33chervpnn}/addtrojan.sh"
-# wget -O delvmess "https://${gl33chervpnn}/delv2ray.sh"
-# wget -O delvless "https://${gl33chervpnn}/delvless.sh"
-# wget -O deltrojan "https://${gl33chervpnn}/deltrojan.sh"
-# wget -O cekvless "https://${gl33chervpnn}/cekvless.sh"
-# wget -O cektrojan "https://${gl33chervpnn}/cektrojan.sh"
-# wget -O renewvmess "https://${gl33chervpnn}/renewv2ray.sh"
-# wget -O renewvless "https://${gl33chervpnn}/renewvless.sh"
-# wget -O renewtrojan "https://${gl33chervpnn}/renewtrojan.sh"
-# wget -O addtrgo "https://${gl33chervpnnn}/addtrgo.sh"
-# wget -O deltrgo "https://${gl33chervpnnn}/deltrgo.sh"
-# wget -O renewtrgo "https://${gl33chervpnnn}/renewtrgo.sh"
-# wget -O cektrgo "https://${gl33chervpnnn}/cektrgo.sh"
-# wget -O cekvmess "https://${gl33chervpnn}/cekv2ray.sh"
-# wget -O certv2ray "https://${gl33chervpnn}/certv2ray.sh"
-wget -O portsshws "https://${gl33chervpnnnnn}/portsshws.sh"
-wget -O portsshnontls "https://${gl33chervpnnnnn}/portsshnontls.sh"
+wget -O addhost "https://${sshlink}/addhost.sh"
+wget -O about "https://${sshlink}/about.sh"
+wget -O menu "https://${sshlink}/menu.sh"
+wget -O addssh "https://${sshlink}/addssh.sh"
+wget -O trialssh "https://${sshlink}/trialssh.sh"
+wget -O delssh "https://${sshlink}/delssh.sh"
+wget -O member "https://${sshlink}/member.sh"
+wget -O delexp "https://${sshlink}/delexp.sh"
+wget -O cekssh "https://${sshlink}/cekssh.sh"
+wget -O restart "https://${sshlink}/restart.sh"
+wget -O speedtest "https://${sshlink}/speedtest_cli.py"
+wget -O info "https://${sshlink}/info.sh"
+wget -O ram "https://${sshlink}/ram.sh"
+wget -O renewssh "https://${sshlink}/renewssh.sh"
+wget -O autokill "https://${sshlink}/autokill.sh"
+wget -O ceklim "https://${sshlink}/ceklim.sh"
+wget -O tendang "https://${sshlink}/tendang.sh"
+wget -O clearlog "https://${sshlink}/clearlog.sh"
+wget -O changeport "https://${sshlink}/changeport.sh"
+wget -O portovpn "https://${sshlink}/portovpn.sh"
+wget -O portwg "https://${sshlink}/portwg.sh"
+wget -O porttrojan "https://${sshlink}/porttrojan.sh"
+wget -O portsstp "https://${sshlink}/portsstp.sh"
+wget -O portsquid "https://${sshlink}/portsquid.sh"
+wget -O portvlm "https://${sshlink}/portvlm.sh"
+wget -O wbmn "https://${sshlink}/webmin.sh"
+wget -O xp "https://${sshlink}/xp.sh"
+wget -O swapkvm "https://${sshlink}/swapkvm.sh"
+wget -O certsslh "https://${sshlink}/certsslh.sh"
+wget -O cfnhost "https://${sshlink}/cfnhost.sh"
+wget -O addvmess "https://${xraylink}/addv2ray.sh"
+wget -O addvless "https://${xraylink}/addvless.sh"
+wget -O addtrojan "https://${xraylink}/addtrojan.sh"
+wget -O delvmess "https://${xraylink}/delv2ray.sh"
+wget -O delvless "https://${xraylink}/delvless.sh"
+wget -O deltrojan "https://${xraylink}/deltrojan.sh"
+wget -O cekvless "https://${xraylink}/cekvless.sh"
+wget -O cektrojan "https://${xraylink}/cektrojan.sh"
+wget -O renewvmess "https://${xraylink}/renewv2ray.sh"
+wget -O renewvless "https://${xraylink}/renewvless.sh"
+wget -O renewtrojan "https://${xraylink}/renewtrojan.sh"
+wget -O addtrgo "https://${trojangolink}/addtrgo.sh"
+wget -O deltrgo "https://${trojangolink}/deltrgo.sh"
+wget -O renewtrgo "https://${trojangolink}/renewtrgo.sh"
+wget -O cektrgo "https://${trojangolink}/cektrgo.sh"
+wget -O cekvmess "https://${xraylink}/cekv2ray.sh"
+wget -O certv2ray "https://${xraylink}/certv2ray.sh"
+wget -O portsshws "https://${websocketlink}/portsshws.sh"
+wget -O portsshnontls "https://${websocketlink}/portsshnontls.sh"
 
 chmod +x addhost
 chmod +x menu

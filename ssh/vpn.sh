@@ -20,10 +20,8 @@ echo -e "${NC}${RED}Permission Denied!${NC}";
 exit 0
 fi
 clear
-# By Akbar Maulana
-# ==================================================
-# Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+
+sshlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
@@ -37,7 +35,7 @@ apt install openvpn easy-rsa unzip -y
 apt install openssl iptables iptables-persistent -y
 mkdir -p /etc/openvpn/server/easy-rsa/
 cd /etc/openvpn/
-wget https://${akbarvpn}/vpn.zip
+wget https://${sshlink}/vpn.zip
 unzip vpn.zip
 rm -f vpn.zip
 chown -R root:root /etc/openvpn/server/easy-rsa/
