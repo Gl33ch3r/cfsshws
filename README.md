@@ -86,7 +86,7 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 
 • Autoreboot On 05.00 GMT +8
 
-• Futo Delete Expired Account
+• Auto Delete Expired Account
 
 ------------
 **Telegram**
