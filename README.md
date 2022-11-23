@@ -12,6 +12,14 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 
 • OHP SSH & OHP Dropbear & OHP OpenVPN
 
+• XRAY VMESS
+
+• XRAY VLESS
+
+• XRAY TROJAN
+
+• TROJAN GO
+
 • Backup Data ALL Service
 
 • Restore Data ALL Service
@@ -38,6 +46,16 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 
 • Nginx                   : 89
 
+• XRAYS Vmess TLS         : 8443
+
+• XRAYS Vmess None TLS    : 80
+
+• XRAYS Vless TLS         : 8443
+
+• XRAYS Vless None TLS    : 80
+
+• XRAYS Trojan            : 2083
+
 • Websocket TLS           : 443
 
 • Websocket None TLS      : 8880
@@ -49,6 +67,8 @@ rm -f setup.sh && apt update && apt upgrade -y && update-grub && sleep 2 && apt-
 • OHP Dropbear            : 8282
 
 • OHP OpenVPN             : 8383
+
+• Trojan Go               : 2087
 
  ### Server Information & Other Features
  
