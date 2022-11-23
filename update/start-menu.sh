@@ -70,7 +70,7 @@ nginxs=$(systemctl status nginx | grep Active: | awk '{print $2}')
 crons=$(systemctl status cron | grep Active: | awk '{print $2}')
 fails=$(systemctl status fail2ban | grep Active: | awk '{print $2}')
 squid=$(systemctl status squid | grep Active: | awk '{print $2}')
-# xrays=$(systemctl status xray | grep Active: | awk '{print $2}')
+xrays=$(systemctl status xray | grep Active: | awk '{print $2}')
 ell=active
 #
 #
@@ -124,11 +124,11 @@ echo -e " Fail2ban                :$GREEN [Running] $NC"
 else
 echo -e " Fail2ban                :$RED [Error] $NC"
 fi
-#if [ "$xrays" == "$ell" ]; then
-# echo -e " Xray/V2Ray              :$GREEN [Running] $NC"
-# else
-# echo -e " Xray/V2Ray              :$RED [Error] $NC"
-# fi
+if [ "$xrays" == "$ell" ]; then
+echo -e " Xray/V2Ray              :$GREEN [Running] $NC"
+else
+echo -e " Xray/V2Ray              :$RED [Error] $NC"
+fi
 echo -e "$BLUE━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$NC"
 echo -e "$BRED----------- Mod By Gl33ch3r -----------"
 echo -e "$BLUE━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━$NC"

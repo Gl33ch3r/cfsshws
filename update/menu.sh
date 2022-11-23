@@ -27,11 +27,12 @@ echo -e "$BLUE║           $ORANGE  [ Main Menu ]          $BLUE   ║"
 echo -e "$BLUE╠═══════════════════════════════════════$BLUE╣"
 echo -e "$BLUE║---------------------------------------║"
 echo -e "$BLUE╠➣$NC 1$NC. SSH & OpenVPN Account             $BLUE║ "
-echo -e "$BLUE╠➣$NC 2$NC. Restart All Service         $BLUE      ║ " 
-echo -e "$BLUE╠➣$NC 3$NC. Backup & Restore            $BLUE      ║ " 
-echo -e "$BLUE╠➣$NC 4$NC. Settings                    $BLUE      ║ " 
-echo -e "$BLUE╠➣$NC 5$NC. Check Service               $BLUE      ║ " 
-echo -e "$BLUE╠➣$NC 6$NC. Exit                        $BLUE      ║ " 
+echo -e "$BLUE╠➣$NC 2$NC. Vmess/Vless/Xray/Torjan Account   $BLUE║ " 
+echo -e "$BLUE╠➣$NC 3$NC. Restart All Service               $BLUE║ " 
+echo -e "$BLUE╠➣$NC 4$NC. Backup & Restore                  $BLUE║ " 
+echo -e "$BLUE╠➣$NC 5$NC. Settings                          $BLUE║ " 
+echo -e "$BLUE╠➣$NC 6$NC. Check Service                     $BLUE║ " 
+echo -e "$BLUE╠➣$NC 7$NC. Exit                              $BLUE║ " 
 echo -e "$BLUE║---------------------------------------║"
 echo -e "$BLUE╠➣$NC Mod By Gl33ch3r                      $BLUE║"
 echo -e "$BLUE╠➣$NC Telegram https://t.me/Gonfreecs      $BLUE║"
@@ -46,15 +47,18 @@ maddssh
 sslh-fix-reboot
 ;;
 3)
-mbackup
+sslh-fix-reboot
 ;;
 4)
+mbackup
+;;
+5)
 msetting
 ;;
-5)
+6)
 start-menu
 ;;
-5)
+7)
 clear
 exit
 ;;
