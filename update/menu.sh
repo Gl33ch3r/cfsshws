@@ -44,7 +44,7 @@ case $menu in
 maddssh
 ;;
 2)
-sslh-fix-reboot
+maddxray
 ;;
 3)
 sslh-fix-reboot
