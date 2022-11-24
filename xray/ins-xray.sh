@@ -11,14 +11,6 @@ LIGHT='\033[0;37m'
 # ==========================================
 #Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
-ALLOWEDIP=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP)
-if [[ $MYIP == $ALLOWEDIP ]]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
-else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-exit 0
-fi
 clear
 domain=$(cat /etc/xray/domain)
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
@@ -33,13 +25,8 @@ chronyc sourcestats -v
 chronyc tracking -v
 date
 
-# / / Ambil Xray Core Version Terbaru
 latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
-
-# / / Installation Xray Core
 xraycore_link="https://github.com/XTLS/Xray-core/releases/download/v$latest_version/xray-linux-64.zip"
-
-# / / Make Main Directory
 mkdir -p /usr/bin/xray
 mkdir -p /etc/xray
 
