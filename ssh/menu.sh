@@ -7,7 +7,7 @@ yl="\033[0;1;33m"
 wh="\033[0m"
 
 echo -e "$y-------------------------------------------------------------$wh"
-echo -e "$y             Telegram : https://t.me/Gonfreecs $wh"
+echo -e "$y        Telegram : https://t.me/Gonfreecs600 $wh"
 echo -e "$y           Premium Auto Script By Gl33ch3r $wh"
 echo -e "$y-------------------------------------------------------------$wh"
 echo ""
