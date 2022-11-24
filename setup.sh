@@ -18,33 +18,35 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
-# Link Hosting Kalian Untuk Ssh Vpn
-gl33chervpn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
-# Link Hosting Kalian Untuk Sstp
-gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sstp"
-# Link Hosting Kalian Untuk Ssr
-gl33chervpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssr"
-# Link Hosting Kalian Untuk Shadowsocks
-gl33chervpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/shadowsocks"
-# Link Hosting Kalian Untuk Wireguard
-gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/wireguard"
-# Link Hosting Kalian Untuk Xray
-gl33chervpnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
-# Link Hosting Kalian Untuk Ipsec
-gl33chervpnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipsec"
-# Link Hosting Kalian Untuk Backup
-gl33chervpnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/backup"
-# Link Hosting Kalian Untuk Websocket
-gl33chervpnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
-# Link Hosting Kalian Untuk Ohp
-gl33chervpnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ohp"
+# Link Hosting You For Ssh Vpn
+sshlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+# Link Hosting You For Sstp
+# gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sstp"
+# Link Hosting You For Ssr
+# gl33chervpnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssr"
+# Link Hosting You For Shadowsocks
+# gl33chervpnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/shadowsocks"
+# Link Hosting You For Wireguard
+# gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/wireguard"
+# Link Hosting You For Xray
+xraylink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
+# Link Hosting You For Ipsec
+# gl33chervpnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipsec"
+# Link Hosting You For Backup
+backuplink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/backup"
+# Link Hosting You For Websocket
+websocketlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
+# Link Hosting You For Ohp
+ohplink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ohp"
 # link Hosting update
-gl33chervpnnnnnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/update"
+updatelink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/update"
+# link Hosting sslh-fix
+sslhlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sslh-fix"
 
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
-IZIN=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP | awk '{print $3}')
-if [ $MYIP = $MYIP ]; then
+ALLOWEDIP=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP)
+if [ $MYIP == $ALLOWEDIP ]; then
 echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
 echo -e "${NC}${RED}Permission Denied!${NC}";
@@ -57,23 +59,25 @@ if [ -f "/etc/xray/domain" ]; then
 echo "Script Already Installed"
 exit 0
 fi
+
 mkdir /var/lib/gl33ch3rvpn;
-wget https://${gl33chervpn}/newhost.sh && chmod +x newhost.sh && ./newhost.sh
+
+wget https://${sshlink}/newhost.sh && chmod +x newhost.sh && ./newhost.sh
 sleep 1
 #install v2ray
-wget https://${gl33chervpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+wget https://${xraylink}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 #install ssh ovpn
-wget https://${gl33chervpn}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+wget https://${sshlink}/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 # Websocket
-wget https://${gl33chervpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
+wget https://${websocketlink}/edu.sh && chmod +x edu.sh && ./edu.sh
 # OphvServer
-wget https://${gl33chervpnnnnnnnnnn}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://${ohplink}/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 #Setting Backup
-wget https://${gl33chervpnnnnnnnn}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://${backuplink}/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 # Update Menu
-wget https://${gl33chervpnnnnnnnnnnn}/getupdate.sh && chmod +x getupdate.sh && ./getupdate.sh
+wget https://${updatelink}/getupdate.sh && chmod +x getupdate.sh && ./getupdate.sh
 # sslh fix
-wget https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sslh-fix/sslh-fix.sh && chmod +x sslh-fix.sh && ./sslh-fix.sh
+wget https://${sslhlink}/sslh-fix.sh && chmod +x sslh-fix.sh && ./sslh-fix.sh
 #restart service
 restart
 
@@ -91,7 +95,7 @@ rm -f /root/newhost.sh
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
 Description=autosetting
-Documentation=https://t.me/Gonfreecs
+Documentation=https://t.me/Gonfreecs600
 
 [Service]
 Type=oneshot
@@ -103,7 +107,7 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload
 systemctl enable autosett
-wget -O /etc/set.sh "https://${gl33chervpn}/set.sh"
+wget -O /etc/set.sh "https://${sshlink}/set.sh"
 chmod +x /etc/set.sh
 sslh-fix-reboot
 history -c
@@ -123,12 +127,18 @@ echo "   - Dropbear                : 443, 109, 143"  | tee -a log-install.txt
 echo "   - Squid Proxy             : 3128, 8080"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 89"  | tee -a log-install.txt
+echo "   - XRAYS Vmess TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vmess None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Vless TLS         : 8443"  | tee -a log-install.txt
+echo "   - XRAYS Vless None TLS    : 80"  | tee -a log-install.txt
+echo "   - XRAYS Trojan            : 2083"  | tee -a log-install.txt
 echo "   - Websocket TLS           : 443"  | tee -a log-install.txt
 echo "   - Websocket None TLS      : 8880"  | tee -a log-install.txt
 echo "   - Websocket Ovpn          : 2086"  | tee -a log-install.txt
 echo "   - OHP SSH                 : 8181"  | tee -a log-install.txt
 echo "   - OHP Dropbear            : 8282"  | tee -a log-install.txt
 echo "   - OHP OpenVPN             : 8383"  | tee -a log-install.txt
+echo "   - Tr Go                   : 2087"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Server Information & Other Features"  | tee -a log-install.txt
 echo "   - Timezone                : Asia/Manila (GMT +8)"  | tee -a log-install.txt
