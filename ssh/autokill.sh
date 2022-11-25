@@ -12,14 +12,7 @@ LIGHT='\033[0;37m'
 # ==========================================
 #Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
-ALLOWEDIP=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP)
-if [[ $MYIP == $ALLOWEDIP ]]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
-else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-exit 0
-fi
+
 clear
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[ON]${Font_color_suffix}"

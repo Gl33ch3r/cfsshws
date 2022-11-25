@@ -12,14 +12,7 @@ LIGHT='\033[0;37m'
 # ==========================================
 #Getting
 MYIP=$(wget -qO- ipinfo.io/ip);
-echo "Checking VPS"
-ALLOWEDIP=$(curl https://raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipvps.txt | grep $MYIP)
-if [[ $MYIP == $ALLOWEDIP ]]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
-else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-exit 0
-fi
+
 clear
 sqd="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | head -n1)"
 sqd2="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | tail -n1)"
