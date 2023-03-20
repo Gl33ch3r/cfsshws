@@ -19,7 +19,7 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Link Hosting You For Ssh Vpn
-sshlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
+sshlink="raw.githubusercontent.com/Ysilven/cfsshws/main/ssh"
 # Link Hosting You For Sstp
 # gl33chervpnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sstp"
 # Link Hosting You For Ssr
@@ -29,19 +29,19 @@ sshlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ssh"
 # Link Hosting You For Wireguard
 # gl33chervpnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/wireguard"
 # Link Hosting You For Xray
-xraylink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/xray"
+xraylink="raw.githubusercontent.com/Ysilven/cfsshws/main/xray"
 # Link Hosting You For Ipsec
 # gl33chervpnnnnnnn="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ipsec"
 # Link Hosting You For Backup
-backuplink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/backup"
+backuplink="raw.githubusercontent.com/Ysilven/cfsshws/main/backup"
 # Link Hosting You For Websocket
-websocketlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/websocket"
+websocketlink="raw.githubusercontent.com/Ysilven/cfsshws/main/websocket"
 # Link Hosting You For Ohp
-ohplink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/ohp"
+ohplink="raw.githubusercontent.com/Ysilven/cfsshws/main/ohp"
 # link Hosting update
-updatelink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/update"
+updatelink="raw.githubusercontent.com/Ysilven/cfsshws/main/update"
 # link Hosting sslh-fix
-sslhlink="raw.githubusercontent.com/Gl33ch3r/cfsshws/main/sslh-fix"
+sslhlink="raw.githubusercontent.com/Ysilven/cfsshws/main/sslh-fix"
 
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
@@ -51,7 +51,7 @@ echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
 echo -e "${NC}${RED}Permission Denied!${NC}";
 echo -e "${NC}${LIGHT}Please Contact Admin!!"
-echo -e "${NC}${LIGHT}Telegram : https://t.me/Gonfreecs600"
+echo -e "${NC}${LIGHT}Telegram : https://t.me/"
 exit 0
 fi
 clear
